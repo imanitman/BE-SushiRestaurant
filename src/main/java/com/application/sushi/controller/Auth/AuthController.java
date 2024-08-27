@@ -13,6 +13,7 @@ import com.application.sushi.service.UserService;
 import com.application.sushi.util.SecurityUtil;
 import com.application.sushi.util.error.InvalidException;
 
+
 import java.time.Duration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class AuthController {
     private final RedisTemplate<String, String> redisTemplate;
     private final EmailService emailService;
 
-    public AuthController (AuthenticationManagerBuilder authenticationManagerBuilder, SecurityUtil securityUtil, 
+    public AuthController (AuthenticationManagerBuilder authenticationManagerBuilder, SecurityUtil securityUtil,
         UserService userService, PasswordEncoder passwordEncoder, RedisTemplate<String, String> redisTemplate, EmailService emailService){
             this.authenticationManagerBuilder = authenticationManagerBuilder;
             this.securityUtil = securityUtil;
@@ -73,7 +74,7 @@ public class AuthController {
             user_login.setRole(current_user.getRole());
             user_login.setId(current_user.getId());
         }
-        resLoginDto.setUserLogin(user_login);
+        resLoginDto.setUser(user_login);
         String access_token = this.securityUtil.createAccessToken(reqLoginDto.getUsername(), resLoginDto);
         resLoginDto.setAccess_token(access_token);
         return ResponseEntity.ok().body(resLoginDto);
@@ -105,7 +106,7 @@ public class AuthController {
             user_login.setName(current_user.getName());
             user_login.setRole(current_user.getRole());
             user_login.setEmail(current_user.getEmail());
-            resLoginDto.setUserLogin(user_login);
+            resLoginDto.setUser(user_login);
             String user_token = this.securityUtil.createTokenForResetPassword(email, resLoginDto);
             resLoginDto.setAccess_token(user_token);
             return ResponseEntity.ok().body(resLoginDto);

@@ -29,4 +29,7 @@ public class UserService {
         new_user.setRole("USER");
         return new_user;
     }
+    public boolean isEmailExist(String email){
+        return this. userRepository.existsByEmail(email);
+    }
 }

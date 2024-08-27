@@ -7,4 +7,5 @@ import com.application.sushi.domain.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     User save(User user);
     User findByEmail(String email);
+    boolean existsByEmail(String email);
 }

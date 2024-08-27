@@ -1,7 +1,5 @@
 package com.application.sushi.config;
 
-
-
 import java.util.Collections;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -34,6 +32,5 @@ public class UserDetailsCustom implements UserDetailsService {
                 Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
 
     }
-
 }
 

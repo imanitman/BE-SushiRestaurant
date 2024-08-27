@@ -29,10 +29,10 @@ public class SecurityUtil {
 
     public String createAccessToken(String email, ResLoginDto ResLoginDto){
         ResLoginDto.UserInsideToken user_token = new ResLoginDto.UserInsideToken();
-        user_token.setId(ResLoginDto.getUserLogin().getId());
-        user_token.setEmail(ResLoginDto.getUserLogin().getEmail());
-        user_token.setName(ResLoginDto.getUserLogin().getName());
-        user_token.setRole(ResLoginDto.getUserLogin().getRole());
+        user_token.setId(ResLoginDto.getUser().getId());
+        user_token.setEmail(ResLoginDto.getUser().getEmail());
+        user_token.setName(ResLoginDto.getUser().getName());
+        user_token.setRole(ResLoginDto.getUser().getRole());
         Instant now = Instant.now();
         Instant validity = now.plus(this.accessTokenExpiration, ChronoUnit.SECONDS);
 
@@ -48,10 +48,10 @@ public class SecurityUtil {
 
     public String createTokenForResetPassword(String email, ResLoginDto resLoginDto){
         ResLoginDto.UserInsideToken user_token = new ResLoginDto.UserInsideToken();
-        user_token.setId(resLoginDto.getUserLogin().getId());
-        user_token.setEmail(resLoginDto.getUserLogin().getEmail());
-        user_token.setName(resLoginDto.getUserLogin().getName());
-        user_token.setRole(resLoginDto.getUserLogin().getRole());
+        user_token.setId(resLoginDto.getUser().getId());
+        user_token.setEmail(resLoginDto.getUser().getEmail());
+        user_token.setName(resLoginDto.getUser().getName());
+        user_token.setRole(resLoginDto.getUser().getRole());
         Instant now = Instant.now();
         Instant validity = now.plus(300, ChronoUnit.SECONDS);
 
